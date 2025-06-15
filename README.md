@@ -27,12 +27,18 @@ The generator uses several tunable parameters:
 | `alpha`           | Cooling rate applied to temperature each iteration batch.                 |
 | `val`             | Statistical convergence threshold based on sample mean and variance.      |
 
-## Example Results
+## Found Parameters
 
-- For QFT, best results were achieved with `OP_ratio = 1.9`, `OP_min = 0.04`, `T_initial = 0.01`, and `alpha = 0.99`.
-- Similar patterns were observed across other circuits like QPE, AE, and DJ.
-- The generator consistently reduced loss and circuit depth while maintaining realistic gate distributions.
+We found the following working parameters for the experimented circuits:
 
+| Circuit | OP_ratio | OP_min | T_initial | alpha |
+|---------|----------|--------|-----------|-------|
+| QFT     | 1.9      | 0.04   | 0.01      | 0.99  |
+| QPE     | 1.9      | 0.04   | 0.001     | 0.90  |
+| AE      | 1.1      | 0.04   | 0.001     | 0.85  |
+| DJ      | 2.0      | 0.32   | 0.01      | 0.85  |
+
+val = 0.0002
 
 ## Installation
 
@@ -45,10 +51,10 @@ The generator uses several tunable parameters:
    ```bash
     pip install -r requirements.txt
    ```
-  
+```bash
   qiskit==1.3.2
   networkx==3.4.2
-
+```
 
 ## Usage
   Update the desired parameters inside main.py adn then execute it with:
